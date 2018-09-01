@@ -94,3 +94,24 @@ $(document).on("click", '[data-toggle="lightbox"]', function(event) {
   event.preventDefault();
   $(this).ekkoLightbox();
 });
+
+// Form 
+var $form = $('form#rsvp-form'),
+    url = 'https://script.google.com/macros/s/AKfycbwK0GpdslCai8rHmX-osORyxqGcXQaTXb2sWXL2XZePXWyDHXB9/exec'
+
+$('#rsvp-submit').on('click', function(e) {
+  e.preventDefault();
+  var jqxhr = $.ajax({
+    url: url,
+    method: "GET",
+    dataType: "json",
+    data: $form.serializeObject(),
+    success: function(data, textStatus, jqXHR) {
+      alert('We\'ve got it - you\'re in!');
+      $form.trigger('reset')
+    },
+    error: function( jqXHR, textStatus, errorThrown ) {
+      alert('Woops - there has been an error. Please try again later or email william.mycroft@gmail.com');
+    }
+  });
+});
