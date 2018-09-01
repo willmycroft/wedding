@@ -99,7 +99,7 @@ $(document).on("click", '[data-toggle="lightbox"]', function(event) {
 var $form = $('form#rsvp-form'),
     url = 'https://script.google.com/macros/s/AKfycbwK0GpdslCai8rHmX-osORyxqGcXQaTXb2sWXL2XZePXWyDHXB9/exec'
 
-$('#rsvp-submit').on('click', function(e) {
+$form.submit( function(e) {
   e.preventDefault();
   var jqxhr = $.ajax({
     url: url,
